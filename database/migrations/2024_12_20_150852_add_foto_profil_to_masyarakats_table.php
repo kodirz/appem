@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('masyarakats', function (Blueprint $table) {
-            $table->string('foto_profil')->nullable()->after('no_telepon');
-        });
+        // Periksa apakah kolom 'foto_profil' sudah ada sebelum menambahkannya
+        if (!Schema::hasColumn('masyarakats', 'foto_profil')) {
+            Schema::table('masyarakats', function (Blueprint $table) {
+                $table->string('foto_profil')->nullable()->after('no_telepon');
+            });
+        }
     }
 
     /**
@@ -21,8 +24,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('masyarakats', function (Blueprint $table) {
-            $table->dropColumn('foto_profil');
-        });
+        // Periksa apakah kolom 'foto_profil' ada sebelum menghapusnya
+        if (Schema::hasColumn('masyarakats', 'foto_profil')) {
+            Schema::table('masyarakats', function (Blueprint $table) {
+                $table->dropColumn('foto_profil');
+            });
+        }
     }
 };

@@ -11,7 +11,6 @@ class Pengaduan extends Model
 
     protected $fillable = [
         'nik',
-        'id_petugas', 
         'isi_pengaduan',
         'status',
     ];
@@ -23,8 +22,8 @@ class Pengaduan extends Model
     }
 
     // Relasi dengan petugas 
-    public function petugas()
-    {
-        return $this->belongsTo(Petugas::class, 'id_petugas', 'id_petugas');
-    }
+    // public function petugas()
+    // {
+    //     return $this->belongsTo(Petugas::class, 'id_petugas', 'id_petugas');
+    // }
 }

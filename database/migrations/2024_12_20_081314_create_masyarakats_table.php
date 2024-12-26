@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('masyarakats', function (Blueprint $table) {
             $table->id();
+            $table->string('nik')->unique();
             $table->string('nama');
-            $table->string('username')->unique();
+            // $table->string('username')->unique();
             $table->string('password');
             $table->string('no_telepon');
-            $table->string('foto_profile')->nullable();
+            $table->string('foto_profil')->nullable();
             $table->timestamps();
         });
     }
